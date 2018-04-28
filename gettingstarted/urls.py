@@ -1,9 +1,12 @@
-from django.conf.urls import include, url
 from django.urls import path
 
 from django.contrib import admin
 admin.autodiscover()
-
+from django.conf.urls import url,include
+from django.contrib import admin
+from User import views as myview
+from django.conf import settings
+from django.conf.urls.static import static
 import hello.views
 
 # Examples:
