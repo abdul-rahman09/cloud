@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import django_heroku
+import cloudinary
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'User.apps.UserConfig',
     'Rooms.apps.RoomsConfig',
     'Comment.apps.CommentConfig',
+    'cloudinary',
+
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -154,11 +157,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     #'/var/www/static/',
 ]
-#cloudinary.config( 
-#  cloud_name = "diapyqhpw", 
-#  api_key = "913344513895434", 
-#  api_secret = "0yWbCRD06L5jvhjWULlgeDNfh0Y" 
-#)
+cloudinary.config( 
+  cloud_name = "diapyqhpw", 
+  api_key = "913344513895434", 
+  api_secret = "0yWbCRD06L5jvhjWULlgeDNfh0Y" 
+)
 
 
 

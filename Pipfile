@@ -12,6 +12,7 @@ dj-database-url = "*"
 "psycopg2" = "*"
 python-social-auth = "*"
 social-auth-app-django = "*"
+cloudinary = "*"
 
 [requires]
 python_version = "3.5"

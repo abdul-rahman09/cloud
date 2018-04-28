@@ -7,7 +7,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from .models import User
 from django.http import HttpResponse
-#import cloudinary
+import cloudinary
 from django.utils.datastructures import MultiValueDictKeyError
 
 def login(request):
