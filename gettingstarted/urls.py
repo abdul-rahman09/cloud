@@ -19,4 +19,7 @@ urlpatterns = [
 url(r'^bookaroom_view', myview.bookaroom_view),
 url(r'^authenticate', myview.authenticate),
 url(r'^User/logout', myview.logout),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
