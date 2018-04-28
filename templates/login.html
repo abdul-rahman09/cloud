@@ -31,7 +31,7 @@
         <input type="submit" value="Register"><br>
     </form>
 
-    <a  href="/signup/">Don't have acoount just signup</a>
+    <a  href="/User/signup">Don't have acoount just signup</a>
 
 
 
@@ -141,6 +141,7 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+
 </script>
 
 <!--
@@ -152,7 +153,7 @@
 
 <div id="status">
 </div>
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"      onlogin="window.location='https://glacial-mesa-43314.herokuapp.com/authenticate'">          ></div>
 </body>
 </html>
 
