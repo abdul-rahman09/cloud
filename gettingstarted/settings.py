@@ -127,4 +127,29 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_URL='/Users/bookaroom_view/'
+LOGIN_REDIRECT_URL='/Users/login'
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR),'static_cdn')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    #'/var/www/static/',
+]
+#cloudinary.config( 
+#  cloud_name = "diapyqhpw", 
+#  api_key = "913344513895434", 
+#  api_secret = "0yWbCRD06L5jvhjWULlgeDNfh0Y" 
+#)
+
+
+
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'cloud/media')
+
+
+
 django_heroku.settings(locals())
