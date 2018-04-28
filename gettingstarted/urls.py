@@ -8,10 +8,6 @@ from User import views as myview
 from django.conf import settings
 from django.conf.urls.static import static
 import hello.views
-from linkedin import linkedin
-# Examples:
-# url(r'^$', 'gettingstarted.views.home', name='home'),
-# url(r'^blog/', include('blog.urls')),
 
 urlpatterns = [
     url(r'^db', hello.views.db, name='db'),
