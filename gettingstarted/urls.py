@@ -19,6 +19,8 @@ urlpatterns = [
 url(r'^bookaroom_view', myview.bookaroom_view),
 url(r'^authenticate', myview.authenticate),
 url(r'^User/logout', myview.logout),
+url(r'^oauth/', include('social_django.urls', namespace='social')),
+url('^accounts/', include('django.contrib.auth.urls'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

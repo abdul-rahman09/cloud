@@ -10,6 +10,7 @@ pillow = "*"
 linkedin = "*"
 dj-database-url = "*"
 "psycopg2" = "*"
+python-social-auth = "*"
 
 [requires]
 python_version = "3.5"
