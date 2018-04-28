@@ -11,6 +11,7 @@ linkedin = "*"
 dj-database-url = "*"
 "psycopg2" = "*"
 python-social-auth = "*"
+social-auth-app-django = "*"
 
 [requires]
 python_version = "3.5"
