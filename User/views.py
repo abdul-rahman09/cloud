@@ -51,7 +51,7 @@ def add_user(request):
     name = request.POST['name'].lower()
     username=request.POST['username'].lower()
     photo=request.FILES['fileToUpload']
-    #cloudinary.uploader.upload(photo, public_id = username)
+    cloudinary.uploader.upload(photo, public_id = username)
     obj=User(email=mail,name=name,password=password,username=username,image=photo)
     obj.save()
     return HttpResponse("Saved")
