@@ -14,7 +14,7 @@ import hello.views
 # url(r'^blog/', include('blog.urls')),
 
 urlpatterns = [
-
+url(r'^LnkdIn/', include('LnkdIn.urls')),
     url(r'^db', hello.views.db, name='db'),
     path('admin/', admin.site.urls),
     url(r'^$', myview.hotels),

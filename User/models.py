@@ -12,7 +12,7 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100,blank=True)
     password = models.CharField(max_length=100)
-    username = models.CharField(max_length=20, default='PNL')
+    username = models.CharField(max_length=20, unique=True)
     image = models.ImageField(upload_to='Pictures')
 
     def __str__(self):
