@@ -57,7 +57,7 @@
             "version": "==19.7.1"
         },
         "pillow": {
-            ,
+            
             "version": "==2.0.0"
         },        
         "psycopg2": {
