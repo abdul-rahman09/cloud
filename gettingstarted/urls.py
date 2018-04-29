@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^add_user/', myview.add_user),
     url(r'^User/login/', myview.login),
     url(r'^bookaroom_view/(?P<roomid>\d+)/$', myview.bookaroom_view, name='roomid'),
+    url(r'^fb/',myview.fb),
     url(r'^authenticate/', myview.authenticate),
     url(r'^User/logout/', myview.logout),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
