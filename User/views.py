@@ -20,7 +20,12 @@ from django.http import HttpResponseRedirect
 
 
 def review(request,roomid):
-  user=request.session['name']
+  try:
+    if request.session['name']==None:
+      return HttpResponse('Login required')
+  except KeyError:
+    return HttpResponse('Login required')
+
   id1=User.objects.all().filter(email=user)
   obj=Comment.objects.filter(roomid=roomid)
   answers_list = list(obj)
