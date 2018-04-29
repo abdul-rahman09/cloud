@@ -12,8 +12,8 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 import cloudinary
 from django.utils.datastructures import MultiValueDictKeyError
+from urllib import urlopen
 
-import urllib
 import simplejson
 
 def update(request):
@@ -111,7 +111,7 @@ def bookaroom_view(request,roomid):
 
 
 def getProfilePicUrl(user_id):
-  api_query = urllib.urlopen('https://graph.facebook.com/'+user_id)
+  api_query = urlopen('https://graph.facebook.com/'+user_id)
   dict1 = simplejson.loads(api_query.read())
   return dict1['picture']
 
