@@ -8,7 +8,7 @@ from django.template import RequestContext
 from .models import User
 from Rooms.models import Room
 from Comment.models import Comment
-
+from django.shortcuts import redirect
 from django.http import HttpResponse
 import cloudinary
 from django.utils.datastructures import MultiValueDictKeyError
@@ -105,9 +105,12 @@ def bookaroom_view(request,roomid):
 
     return HttpResponse("Booked by   "  + str(id1.id))
 
-def fb(request,res):
-  
-  return HttpResponse()
+def fb(request):
+  id1=request.GET['res']
+  url='http://graph.facebook.com/' + id1 +'/picture?type=square'
+
+  return redirect(url)
+
 
 
 
