@@ -107,8 +107,8 @@ def bookaroom_view(request,roomid):
 
 def fb(request,res):
   userID=res.id
-  
-  return HttpResponse(https://graph.facebook.com/{userID}?fields=picture.width(720).height(720) )
+
+  return HttpResponse("https://graph.facebook.com/{userID}?fields=picture.width(720).height(720)")
 
 
 
