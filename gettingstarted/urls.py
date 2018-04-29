@@ -17,7 +17,12 @@ urlpatterns = [
     url(r'^User/updateprof/', myview.updateprof),
     url(r'^add_user/', myview.add_user),
     url(r'^User/login/', myview.login),
+
+
+ url(r'^addcomm/(?P<roomid>\d+)/$', myview.addcom, name='roomid'),
+
     url(r'^bookaroom_view/(?P<roomid>\d+)/$', myview.bookaroom_view, name='roomid'),
+        url(r'^Review/(?P<roomid>\d+)/$', myview.review, name='roomid'),
     url(r'^fb/',myview.fb),
     url(r'^authenticate/', myview.authenticate),
     url(r'^User/logout/', myview.logout),

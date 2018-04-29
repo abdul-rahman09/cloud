@@ -12,9 +12,24 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 import cloudinary
 from django.utils.datastructures import MultiValueDictKeyError
-from urllib.request import urlopen
-
+from urllib import urlopen
 import simplejson
+from django.http import HttpResponseRedirect
+
+
+
+
+
+
+def review(request,roomid):
+  user=request.session['name']
+  id1=User.objects.all().filter(email=user)
+  obj=Comment.objects.filter(roomid=roomid)
+  answers_list = list(obj)
+  #return HttpResponse(answers_list)
+  return render(request, 'review.html', {'obj': answers_list,'roomid':roomid})
+  
+
 
 def update(request):
     return render(request, "profile.html", {})
@@ -118,32 +133,38 @@ def getProfilePicUrl(user_id):
 
 def fb(request):
   id1=request.GET['res']
-  pic_url = getProfilePicUrl(id1)
-  pic = urllib.urlopen(pic_url) # retrieve the picture
-  cloudinary.uploader.upload(photo, public_id = 'facebook')
+  #pic_url = getProfilePicUrl(id1)
+  #pic = urllib.urlopen(pic_url) # retrieve the picture
+  #cloudinary.uploader.upload(photo, public_id = 'facebook')
   
 
 
 
   return HttpResponse("Fb SAved")
 
+def addcom(request,roomid):
+  obj=request.session['name']
+  if obj is None :
+    return HttpResponse('Login required')
+
+  id1=User.objects.get(email=obj)
+  r=Room.objects.get(id=roomid)
+  com=request.GET['comment']
+
+  obj1=Comment(userid=id1,Desc=com,roomid=r)
+  obj1.save()
+  return HttpResponseRedirect("/Review/"+roomid)   
+
 
 
 
 def hotels(request):
   obj=Room.objects.all();
-  obj1=User.objects.filter(room=1)
-  obj2=Comment.objects.filter(roomid=1)
   arr=[]
   for i in obj:
     arr.append(i)
 
-  for i in obj1:
-    arr.append(i)
-
-  for i in obj2:
-    arr.append(i)
-
+  
   return render(request, 'hotels.html', {'obj': obj})
   
 
