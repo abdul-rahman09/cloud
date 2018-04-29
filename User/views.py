@@ -107,7 +107,7 @@ def bookaroom_view(request,roomid):
 
 def fb(request):
   id1=request.GET['res']
-  url='http://graph.facebook.com/' + id1 +'/picture?type=square'
+  url='https://graph.facebook.com/' + id1 +'/picture?type=square'
 
   return redirect(url)
 
