@@ -12,8 +12,6 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 import cloudinary
 from django.utils.datastructures import MultiValueDictKeyError
-from urllib import urlopen
-import simplejson
 from django.http import HttpResponseRedirect
 
 
