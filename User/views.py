@@ -25,7 +25,7 @@ def review(request,roomid):
       return HttpResponse('Login required')
   except KeyError:
     return HttpResponse('Login required')
-
+  user=request.session['name']
   id1=User.objects.all().filter(email=user)
   obj=Comment.objects.filter(roomid=roomid)
   answers_list = list(obj)
