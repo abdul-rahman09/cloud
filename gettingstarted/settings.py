@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import django_heroku
+#import django_heroku
 import cloudinary
 
 
@@ -100,17 +100,17 @@ WSGI_APPLICATION = 'gettingstarted.wsgi.application'
 
 DATABASES = {
     
-   'default': {
-        'NAME': 'cloud',
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'admin',
-        'PASSWORD': 'iloveps2'
-    }
+ #  'default': {
+      #  'NAME': 'cloud',
+     #   'ENGINE': 'django.db.backends.postgresql',
+     #   'USER': 'admin',
+    #    'PASSWORD': 'iloveps2'
+   # }
 
-   #    'default': {
-  #      'ENGINE': 'django.db.backends.sqlite3',
- #       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
+       'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 
 
 
@@ -180,4 +180,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'gettingstarted/media')
 
 
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())

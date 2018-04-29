@@ -6,12 +6,40 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from .models import User
+from Rooms.models import Room
+from Comment.models import Comment
+
 from django.http import HttpResponse
 import cloudinary
 from django.utils.datastructures import MultiValueDictKeyError
 
+def update(request):
+    return render(request, "profile.html", {})
+
+
 def login(request):
-	   return render(request, "login.html", {})
+	 return render(request, "login.html", {})
+
+def updateprof(request):
+  try:
+    if request.session['name']==None:
+      return HttpResponse('Login required')
+  except KeyError:
+      return HttpResponse('Login required')
+
+  name=request.POST['name']
+  photo=request.FILES['photo']
+  password=request.POST['password']
+  obj=request.session['name']
+  user=User.objects.get(email=obj)
+   
+  User.objects.select_for_update().filter(id=user.id).update(name=name,password=password,image=photo)
+  cloudinary.uploader.upload(photo, public_id = user.username)
+  return HttpResponse("updated")
+
+
+
+
 
 def authenticate(request):
   try:
@@ -59,19 +87,47 @@ def add_user(request):
 
 
 
-def bookaroom_view(request):
+def bookaroom_view(request,roomid):
     try:
      if request.session['name']==None:
          return HttpResponse('Login required')
     except KeyError:
           return HttpResponse('Login required')
-    return HttpResponse("Booked")
+
+
+    obj=request.session['name']
+    id1=User.objects.get(email=obj)
+    Room.objects.select_for_update().filter(id=roomid).update(userid = id1.id)
+#    obj1=Room.objects.get(id=roomid)
+#    obj1.update(userid=id1.id)
+    #MyModel.objects.filter(pk=some_value).update(field1='some value')
+
+
+    return HttpResponse("Booked by   "  + str(id1.id))
 
 
 
 
 
 def hotels(request):
-   return render(request, "hotels.html", {})
+  obj=Room.objects.all();
+  obj1=User.objects.filter(room=1)
+  obj2=Comment.objects.filter(roomid=1)
+  arr=[]
+  for i in obj:
+    arr.append(i)
+
+  for i in obj1:
+    arr.append(i)
+
+  for i in obj2:
+    arr.append(i)
+
+  return render(request, 'hotels.html', {'obj': obj})
+  
+
+
+  return HttpResponse(arr)
+  return render(request, "hotels.html", {})
 
 
