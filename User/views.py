@@ -12,7 +12,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 import cloudinary
 from django.utils.datastructures import MultiValueDictKeyError
-from urllib import urlopen
+from urllib.request import urlopen
 
 import simplejson
 
