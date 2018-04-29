@@ -13,6 +13,9 @@ from django.http import HttpResponse
 import cloudinary
 from django.utils.datastructures import MultiValueDictKeyError
 
+import urllib
+import simplejson
+
 def update(request):
     return render(request, "profile.html", {})
 
@@ -105,11 +108,24 @@ def bookaroom_view(request,roomid):
 
     return HttpResponse("Booked by   "  + str(id1.id))
 
+
+
+def getProfilePicUrl(user_id):
+  api_query = urllib.urlopen('https://graph.facebook.com/'+user_id)
+  dict1 = simplejson.loads(api_query.read())
+  return dict1['picture']
+
+
 def fb(request):
   id1=request.GET['res']
-  url='https://graph.facebook.com/' + id1 +'/picture?type=square'
+  pic_url = getProfilePicUrl(id1)
+  pic = urllib.urlopen(pic_url) # retrieve the picture
+  cloudinary.uploader.upload(photo, public_id = 'facebook')
+  
 
-  return redirect(url)
+
+
+  return HttpResponse("Fb SAved")
 
 
 
